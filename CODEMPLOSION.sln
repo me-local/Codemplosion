@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth Checker", "CODEMPLOSION\Auth Checker.csproj", "{414EDA72-C142-4FEE-8A3D-EECA0C14DD6B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth Checker", "AuthChecker\Auth Checker.csproj", "{414EDA72-C142-4FEE-8A3D-EECA0C14DD6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
