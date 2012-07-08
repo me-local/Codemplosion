@@ -7,6 +7,8 @@
  *  ----------------------------------------------------------------------------
  */
 
+using System;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 
@@ -18,16 +20,17 @@ namespace CODEMPLOSION
     {
         private static void Main()
         {
-			Console.WriteLine("Honorbuddy auth server state checker");
-			Console.WriteLine("by starz");
+            Console.WriteLine("Honorbuddy auth server state checker");
+            Console.WriteLine("by starz");
+            Console.WriteLine("");
             //Internet Check
             if (HasConnection())
             {
-                Console.WriteLine("Internet is available");
+                Console.WriteLine("Internet: Internet is available");
             }
             else
             {
-                Console.WriteLine("Internet isn't available");
+                Console.WriteLine("Internet: Internet isn't available");
                 Console.ReadKey();
                 return;
             }
@@ -37,19 +40,19 @@ namespace CODEMPLOSION
             if (pingreply != null && pingreply.Status.ToString() != "Success")
             {
                 Console.WriteLine(pingreply.Status);
-                Console.WriteLine("Can't ping server");
-                Console.WriteLine("Server may be offline");
+                Console.WriteLine("Ping: Can't ping server");
+                Console.WriteLine("Ping: Server may be offline");
             }
             else
             {
                 if (pingreply != null)
                 {
-                    Console.WriteLine(pingreply.Status);
-                    Console.WriteLine("Pings look good");
+                    Console.WriteLine("Ping: " + pingreply.Status);
+                    Console.WriteLine("Ping: Pings look good");
                 }
                 else
                 {
-                    Console.WriteLine("Null error");
+                    Console.WriteLine("Ping: Null error");
                 }
             }
 
@@ -57,26 +60,24 @@ namespace CODEMPLOSION
             //Usually we can detect network troubles with that
             using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
             {
+                socket.ReceiveTimeout = 5000;
                 try
                 {
                     socket.Connect("94.174.242.69", 5125);
                     socket.Close();
-                    Console.WriteLine("Socket connection good");
+                    Console.WriteLine("Socket: Socket connection good");
                 }
                 catch (SocketException ex)
                 {
-                    if (ex.SocketErrorCode == SocketError.ConnectionRefused ||
-                        ex.SocketErrorCode == SocketError.TimedOut)
-                    {
-                        Console.WriteLine(ex.SocketErrorCode);
-                        Console.WriteLine("Socket connection failed");
-                        socket.Close();
-                    }
+                    Console.WriteLine("Socket: " + ex.SocketErrorCode);
+                    Console.WriteLine("Socket: Socket connection failed");
+                    socket.Close();
                 }
             }
             Console.ReadKey();
         }
 
+        #region
 
         [DllImport("wininet", CharSet = CharSet.Auto)]
         private static extern bool InternetGetConnectedState(ref ConnectionStatusEnum flags, int dw);
@@ -96,6 +97,8 @@ namespace CODEMPLOSION
             }
             return true;
         }
+
+        #endregion
 
         #region Nested type: ConnectionStatusEnum
 
