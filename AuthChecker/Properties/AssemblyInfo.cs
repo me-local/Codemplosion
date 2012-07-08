@@ -1,7 +1,12 @@
-﻿using System.Reflection;
-using System.Runtime.InteropServices;
+﻿/*  ----------------------------------------------------------------------------
+ *  CODEMPLOSION.com
+ *  ----------------------------------------------------------------------------
+ *  File:       AssemblyInfo.cs
+ *  Author:     starz and team
+ *  License:    Creative Commons Attribution-NonCommercial-ShareAlike (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+ *  ----------------------------------------------------------------------------
+ */
 
-// General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("CODEMPLOSION")]

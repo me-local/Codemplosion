@@ -1,5 +1,12 @@
-﻿using System;
-using System.Net.NetworkInformation;
+﻿/*  ----------------------------------------------------------------------------
+ *  CODEMPLOSION.com
+ *  ----------------------------------------------------------------------------
+ *  File:       Program.cs
+ *  Author:     starz and team
+ *  License:    Creative Commons Attribution-NonCommercial-ShareAlike (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+ *  ----------------------------------------------------------------------------
+ */
+
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 
@@ -11,6 +18,8 @@ namespace CODEMPLOSION
     {
         private static void Main()
         {
+			Console.WriteLine("Honorbuddy auth server state checker");
+			Console.WriteLine("by starz");
             //Internet Check
             if (HasConnection())
             {
